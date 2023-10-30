@@ -307,6 +307,14 @@ int main() {
 #include <string>
 
 int main() {
+
+    string line; 
+    getline(cin, line); // the input should contains 5 int
+    stringstream ss(line);
+    int i1, i2, i3, i4, i5;
+    ss >> i1 >> i2 >> i3 >> i4 >> i5;
+    cout << i1 << " " << i2 << " " << i3 << " " << i4 << " " << i5 << endl;
+
     // Convert an integer to a string
     int num = 42;
     std::stringstream intToStringStream;
