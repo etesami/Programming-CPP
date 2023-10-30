@@ -18,6 +18,7 @@ public:
     
     // Custom copy constructor for deep copy
     // const DeepCopy& other: a reference to a constant DeepCopy object
+    // Based on the code below in main function, this constructor function is not called 
     DeepCopy(const DeepCopy& other) {
         data = new int(*other.data);
     }
@@ -47,7 +48,7 @@ int main() {
 
 
     DeepCopy obj3(42);
-    DeepCopy obj4 = obj3; // Deep copy
+    DeepCopy obj4 = obj3; // Deep copy using operator overloading
     *obj3.data = 10;
     
     std::cout << *obj3.data << " " << *obj4.data << std::endl;

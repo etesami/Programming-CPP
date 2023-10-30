@@ -214,6 +214,9 @@ int main() {
     std::cout << "original: " << original << std::endl;
     std::cout << "ref: " << ref << std::endl;
 
+    // same address will be printed. The ref is just an alias for original
+    std::cout << "ref addr:\t" << &ref << std::endl << "original addr:\t" << &original << std::endl;
+
     return 0;
 }
 
@@ -430,8 +433,12 @@ public:
     
     // Custom copy assignment operator for deep copy
     DeepCopy& operator=(const DeepCopy& other) {
+        // &other returns the address of passed value
+        // other is just an alias to the passed parameter
         if (this != &other) {
             delete data; // Free the existing resource
+            // other.data is a pointer
+            // *other.data is the actual int value
             data = new int(*other.data); // Perform deep copy
         }
         return *this;
