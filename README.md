@@ -5,10 +5,15 @@
   - [Multiple Functions](#multiple-functions)
   - [Multiple CPP Files and Header Files](#multiple-cpp-files-and-header-files)
   - [Multiple file with Makefile](#multiple-file-with-makefile)
+  - [Object Oriented Programming](#object-oriented-programming)
   - [Pointers](#pointers)
   - [Linked List with Strcut](#linked-list-with-strcut)
   - [File Stream](#file-stream)
   - [StringStreams (sstream)](#stringstreams-sstream)
+  - [Operators](#operators)
+    - [Overloading Binary Operators](#overloading-binary-operators)
+    - [Overloading Unary Operators](#overloading-unary-operators)
+    - [Overloading Comparison Operators](#overloading-comparison-operators)
 
 
 ## Simple CPP File
@@ -284,5 +289,63 @@ int main() {
 
     return 0;
 }
+
+```
+
+## Operators
+Take a look at the [ex6](./ex6) folder.
+
+### Overloading Binary Operators
+```cpp
+class Complex {
+public:
+    double real;
+    double imag;
+
+    Complex(double r, double i) : real(r), imag(i) {}
+
+    Complex operator+(const Complex& other) {
+        return Complex(real + other.real, imag + other.imag);
+    }
+};
+```
+
+### Overloading Unary Operators
+```cpp
+class Integer {
+public:
+    int value;
+
+    Integer(int v) : value(v) {}
+
+    Integer& operator++() {
+        // Prefix increment (++x)
+        value++;
+        return *this;
+    }
+
+    Integer operator++(int) {
+        // Postfix increment (x++)
+        Integer copy = *this;
+        value++;
+        return copy;
+    }
+};
+
+```
+
+### Overloading Comparison Operators
+```cpp
+class Fraction {
+public:
+    int numerator;
+    int denominator;
+
+    Fraction(int num, int den) : numerator(num), denominator(den) {}
+
+    bool operator==(const Fraction& other) {
+        return (numerator * other.denominator == other.numerator * denominator);
+    }
+};
 
 ```
