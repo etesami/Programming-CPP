@@ -105,7 +105,11 @@ Consider example in [ex3](./ex3/) folder. Then:
 CC = g++
 CFLAGS = -g -Wall
 TARGET = myprogram
-SRCS = main.cpp other.cpp
+
+# This detects all .cpp files in the current directory
+SRCS = $(wildcard *.cpp) 
+# SRCS = main.cpp other.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # default target
